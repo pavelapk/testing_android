@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -34,7 +35,7 @@ class IntegrationTest {
     }
 
     @Test
-    fun testCachePositiveResult() {
+    fun testCachePositiveResult() = runBlocking {
         val parityOutlier = ParityOutlier()
         val input = arrayOf(1, 2, 4, 6, 8, 10)
         val inputStr = input.joinToString(",")
@@ -58,7 +59,7 @@ class IntegrationTest {
     }
 
     @Test
-    fun testCacheNegativeResult() {
+    fun testCacheNegativeResult() = runBlocking {
         val parityOutlier = ParityOutlier()
         val input = arrayOf(0, 0, 0)
         val inputStr = input.joinToString(",")
@@ -82,7 +83,7 @@ class IntegrationTest {
     }
 
     @Test
-    fun testCacheError() {
+    fun testCacheError() = runBlocking {
         val parityOutlier = ParityOutlier()
         val input = arrayOf(0, 0)
         val inputStr = input.joinToString(",")
